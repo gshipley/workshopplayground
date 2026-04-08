@@ -80,15 +80,17 @@ Before you can deploy a model, you need to know how to reach the OpenShift AI da
 
 Open the OpenShift console at `https://console-openshift-console.apps.ocp.cloud.rhai-tmm.dev/`. If you are prompted to log in, complete the authentication flow for your environment.
 
-Once you are on the console landing page, look at the left-hand navigation panel. Depending on your cluster configuration, you will see an entry for **Red Hat OpenShift AI** in the navigation. This is the link that takes you from the general-purpose OpenShift console into the dedicated AI dashboard.
+Once you are on the console landing page, look at the top navigation bar. In the upper-right area, you will see a row of icons. The first icon is the **Application launcher** — it looks like a grid of nine squares (sometimes called the "waffle" icon). Click it to open the application menu.
 
-Click the **Red Hat OpenShift AI** link. This opens the OpenShift AI dashboard in the same browser window (or in a new tab, depending on your cluster configuration).
+The application launcher menu is organized into sections. Scroll down until you see the **OpenShift Self Managed Services** section. Under that heading, click **Red Hat OpenShift AI**. This opens the OpenShift AI dashboard in a new browser tab.
 
-Why start here? In a real environment, you may not always have the dashboard URL bookmarked. Knowing how to find OpenShift AI from the main console is a practical skill that will save you time, especially when you are working in a new cluster or helping a colleague get started.
+The application launcher is the standard way to reach OpenShift AI from the console. It is always available in the top bar regardless of which console page you are on, which makes it the most reliable navigation path. In some cluster configurations, you may also see OpenShift AI in the left-hand navigation panel, but the application launcher works in all environments.
 
-![OpenShift console with OpenShift AI navigation entry](assets/screenshots/01-console-openshift-ai-entry.png)
+Why start here? In a real environment, you may not always have the dashboard URL bookmarked. Knowing how to find OpenShift AI from the application launcher is a practical skill that will save you time, especially when you are working in a new cluster or helping a colleague get started.
 
-Expected result: you can see the OpenShift console and identify the navigation entry for Red Hat OpenShift AI.
+![OpenShift console with Application launcher showing Red Hat OpenShift AI](assets/screenshots/01-console-openshift-ai-entry.png)
+
+Expected result: you can see the Application launcher menu with **Red Hat OpenShift AI** listed under **OpenShift Self Managed Services**.
 
 ### 2. Orient yourself on the OpenShift AI dashboard (3 minutes)
 

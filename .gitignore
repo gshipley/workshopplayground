@@ -1,0 +1,31 @@
+# Ignore everything by default
+*
+
+# Allow this file and top-level items
+!.gitignore
+!*/
+!README.md
+
+# Allow workshop content and assets
+!*/workshop.md
+!*/assets/
+!*/assets/**
+!*/modules/
+!*/modules/**
+
+# Allow capture config files (but not secrets or artifacts)
+!*/capture/
+!*/capture/workshop-config.toml
+!*/capture/screenshot-manifest.yaml
+!*/capture/auth-state.json.example
+
+# Exclude auth state, traces, recordings, and temp files
+*/capture/auth-state.json
+*/capture/*.webm
+*/capture/*.zip
+*/capture/*.trace
+*/capture/tmp/
+
+# Exclude Playwright CLI artifacts
+.playwright-cli/
+*/.playwright-cli/

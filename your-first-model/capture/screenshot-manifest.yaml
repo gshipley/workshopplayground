@@ -1,0 +1,72 @@
+workshop:
+  slug: your-first-model
+  title: Your first Model
+  product: rhai-3.3
+  config_file: capture/workshop-config.toml
+  auth_state_file: {{ auth_state_file }}
+  session: {{ session }}
+  viewport:
+    width: {{ viewport.width }}
+    height: {{ viewport.height }}
+
+shots:
+  - name: project-overview-deploy-entry
+    url: {{ dashboard_origin }}/projects/{{ ds_project }}
+    output: assets/screenshots/01-project-overview-deploy-model.png
+    caption: Project overview page for the target OpenShift AI project
+    alt_text: User Gshipley Project overview page in OpenShift AI
+    wait_for:
+      - "body"
+    steps: []
+
+  - name: model-details
+    url: {{ dashboard_origin }}/ai-hub/deployments/deploy
+    output: assets/screenshots/02-model-details-qwen.png
+    caption: Model details step populated for the Qwen 3 4B Hugging Face URI
+    alt_text: Model details step for deploying Qwen 3 4B from Hugging Face in OpenShift AI
+    wait_for:
+      - "body"
+    steps:
+      - action: select
+        target: "Model location = URI"
+      - action: fill
+        target: "URI = {{ model_uri }}"
+      - action: fill
+        target: "Connection name = {{ model_source_connection }}"
+      - action: select
+        target: "Model type = Generative AI model"
+
+  - name: deployment-settings
+    url: {{ dashboard_origin }}/ai-hub/deployments/deploy
+    output: assets/screenshots/03-model-deployment-settings.png
+    caption: Model deployment settings with project, GPU hardware profile, and vLLM runtime selected
+    alt_text: Model deployment settings for Qwen 3 4B in OpenShift AI
+    wait_for:
+      - "body"
+    steps:
+      - action: select
+        target: "Project = {{ project_display_name }}"
+      - action: fill
+        target: "Deployment name = {{ deployment_name }}"
+      - action: select
+        target: "Hardware profile = {{ hardware_profile }}"
+      - action: select
+        target: "Serving runtime = {{ serving_runtime }}"
+
+  - name: review-deployment
+    url: {{ dashboard_origin }}/ai-hub/deployments/deploy
+    output: assets/screenshots/04-review-qwen-deployment.png
+    caption: Review step before submitting the Qwen 3 4B deployment
+    alt_text: Review step for the Qwen 3 4B deployment in OpenShift AI
+    wait_for:
+      - "body"
+    steps: []
+
+  - name: deployment-status
+    url: {{ dashboard_origin }}/ai-hub/deployments/{{ ds_project }}
+    output: assets/screenshots/05-deployment-starting.png
+    caption: Deployment list showing the submitted Qwen 3 4B deployment
+    alt_text: Deployments page showing the submitted Qwen 3 4B deployment in OpenShift AI
+    wait_for:
+      - "body"
+    steps: []

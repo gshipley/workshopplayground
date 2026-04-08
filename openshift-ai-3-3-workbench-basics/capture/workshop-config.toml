@@ -1,0 +1,11 @@
+product = "rhai-3.3"
+console_origin = "https://console-openshift-console.apps.ocp.cloud.rhai-tmm.dev"
+console_url = "https://console-openshift-console.apps.ocp.cloud.rhai-tmm.dev/dashboards"
+ds_project = "user-gshipley"
+workbench_name = "user-gshipley-workbench"
+session = "pw-ai33-wb"
+auth_state_file = "capture/auth-state.json"
+
+[viewport]
+width = 1440
+height = 1024

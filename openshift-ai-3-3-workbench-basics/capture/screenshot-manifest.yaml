@@ -1,0 +1,55 @@
+workshop:
+  slug: openshift-ai-3-3-workbench-basics
+  title: OpenShift AI 3.3 Workbench Basics
+  product: rhai-3.3
+  config_file: capture/workshop-config.toml
+  auth_state_file: "{{ auth_state_file }}"
+  session: "{{ session }}"
+  viewport:
+    width: "{{ viewport.width }}"
+    height: "{{ viewport.height }}"
+
+shots:
+  - name: console-landing-page
+    url: "{{ console_url }}"
+    output: assets/screenshots/01-console-landing-page.png
+    caption: OpenShift console landing page with Red Hat OpenShift AI entry point visible
+    alt_text: OpenShift console landing page with Red Hat OpenShift AI navigation visible
+    wait_for:
+      - "getByRole('heading')"
+    steps: []
+    notes:
+      - Capture either the login page or the authenticated landing page, depending on whether auth state is already loaded.
+
+  - name: project-overview
+    url: "{{ console_origin }}/k8s/cluster/projects/{{ ds_project }}"
+    output: assets/screenshots/02-project-overview.png
+    caption: Project overview page for the configured workshop namespace
+    alt_text: Project overview page for the configured workshop namespace
+    wait_for:
+      - "getByText(/Project details/i)"
+    steps: []
+    notes:
+      - This cluster exposes the workbench flow through project and Notebook resource pages in the OpenShift console.
+
+  - name: notebooks-list
+    url: "{{ console_origin }}/k8s/ns/{{ ds_project }}/kubeflow.org~v1beta1~Notebook"
+    output: assets/screenshots/03-notebooks-list.png
+    caption: Notebook inventory for the configured workshop namespace
+    alt_text: Notebook inventory for the configured workshop namespace
+    wait_for:
+      - "getByRole('heading', { name: /notebooks/i })"
+    steps: []
+    notes:
+      - The list should show the configured workbench name.
+
+  - name: workbench-details
+    url: "{{ console_origin }}/k8s/ns/{{ ds_project }}/kubeflow.org~v1beta1~Notebook/{{ workbench_name }}"
+    output: assets/screenshots/04-workbench-details.png
+    caption: Notebook details page for the configured workbench
+    alt_text: Notebook details page for the configured workbench
+    wait_for:
+      - "getByRole('heading', { name: /Notebook details/i })"
+    steps: []
+    notes:
+      - Capture the conditions section so the screenshot shows a healthy ready state.

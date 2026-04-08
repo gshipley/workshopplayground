@@ -1,0 +1,12 @@
+product = "rhai-3.3"
+dashboard_origin = "https://data-science-gateway.apps.ocp.cloud.rhai-tmm.dev"
+dashboard_url = "https://data-science-gateway.apps.ocp.cloud.rhai-tmm.dev/"
+ds_project = "user-gshipley"
+project_display_name = "User Gshipley Project"
+workbench_name = "user-gshipley-workbench"
+session = "pw-ai33-dashboard"
+auth_state_file = "capture/auth-state.json"
+
+[viewport]
+width = 1440
+height = 1024

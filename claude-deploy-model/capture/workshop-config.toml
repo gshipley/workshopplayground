@@ -1,0 +1,22 @@
+product = "rhai-3.3"
+console_origin = "https://console-openshift-console.apps.ocp.cloud.rhai-tmm.dev"
+console_url = "https://console-openshift-console.apps.ocp.cloud.rhai-tmm.dev/dashboards"
+dashboard_origin = "https://data-science-gateway.apps.ocp.cloud.rhai-tmm.dev"
+dashboard_url = "https://data-science-gateway.apps.ocp.cloud.rhai-tmm.dev/"
+ds_project = "user-gshipley"
+project_display_name = "User Gshipley Project"
+model_display_name = "Qwen 3 4B"
+model_uri = "hf://Qwen/Qwen3-4B"
+model_source_connection = "qwen3-4b-connection"
+deployment_name = "claude-deploy-qwen3-4b"
+deployment_description = "Qwen 3 4B deployment created during the claude-deploy-model workshop"
+hardware_profile = "Reserved MIG-18GB"
+serving_runtime = "vLLM NVIDIA GPU ServingRuntime for KServe"
+max_model_len = 32768
+estimated_minutes = 25
+session = "pw-claude-deploy"
+auth_state_file = "capture/auth-state.json"
+
+[viewport]
+width = 1440
+height = 1024

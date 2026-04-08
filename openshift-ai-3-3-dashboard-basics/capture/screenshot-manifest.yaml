@@ -1,0 +1,47 @@
+workshop:
+  slug: openshift-ai-3-3-dashboard-basics
+  title: OpenShift AI 3.3 Dashboard Basics
+  product: rhai-3.3
+  config_file: capture/workshop-config.toml
+  auth_state_file: {{ auth_state_file }}
+  session: {{ session }}
+  viewport:
+    width: {{ viewport.width }}
+    height: {{ viewport.height }}
+
+shots:
+  - name: dashboard-home
+    url: {{ dashboard_url }}
+    output: assets/screenshots/01-dashboard-home.png
+    caption: OpenShift AI dashboard home page
+    alt_text: OpenShift AI dashboard home page
+    wait_for:
+      - "body"
+    steps: []
+
+  - name: projects-list
+    url: {{ dashboard_origin }}/projects
+    output: assets/screenshots/02-projects-list.png
+    caption: Filtered projects list showing {{ project_display_name }}
+    alt_text: Filtered projects list in the OpenShift AI dashboard showing {{ project_display_name }}
+    wait_for:
+      - "body"
+    steps: []
+
+  - name: project-overview
+    url: {{ dashboard_origin }}/projects/{{ ds_project }}
+    output: assets/screenshots/03-project-overview.png
+    caption: Project overview for {{ project_display_name }}
+    alt_text: Project overview for {{ project_display_name }} in the OpenShift AI dashboard
+    wait_for:
+      - "body"
+    steps: []
+
+  - name: project-workbenches
+    url: {{ dashboard_origin }}/projects/{{ ds_project }}?section=workbenches
+    output: assets/screenshots/04-project-workbenches.png
+    caption: Workbenches tab for {{ project_display_name }}
+    alt_text: Workbenches tab for {{ project_display_name }} showing {{ workbench_name }}
+    wait_for:
+      - "body"
+    steps: []

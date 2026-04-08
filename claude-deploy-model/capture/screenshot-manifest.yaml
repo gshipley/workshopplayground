@@ -1,0 +1,112 @@
+workshop:
+  slug: claude-deploy-model
+  title: Deploy a Model on OpenShift AI
+  product: rhai-3.3
+  config_file: capture/workshop-config.toml
+  auth_state_file: {{ auth_state_file }}
+  session: {{ session }}
+  viewport:
+    width: {{ viewport.width }}
+    height: {{ viewport.height }}
+
+shots:
+  - name: console-to-ai-dashboard
+    url: "{{ console_url }}"
+    output: assets/screenshots/01-console-openshift-ai-entry.png
+    caption: OpenShift console showing the navigation entry point for Red Hat OpenShift AI
+    alt_text: OpenShift console landing page with the Red Hat OpenShift AI link visible in the left navigation
+    wait_for:
+      - "getByRole('heading')"
+    steps: []
+    notes:
+      - Capture the console landing page so the learner can see where to find the OpenShift AI link.
+
+  - name: dashboard-home
+    url: "{{ dashboard_url }}"
+    output: assets/screenshots/02-ai-dashboard-home.png
+    caption: OpenShift AI dashboard home page after navigating from the OpenShift console
+    alt_text: OpenShift AI dashboard home page showing left navigation and main content area
+    wait_for:
+      - "body"
+    steps: []
+
+  - name: projects-list
+    url: "{{ dashboard_origin }}/projects"
+    output: assets/screenshots/03-projects-list.png
+    caption: Projects list in OpenShift AI filtered to show the target project
+    alt_text: Projects page in the OpenShift AI dashboard showing the User Gshipley Project
+    wait_for:
+      - "body"
+    steps: []
+
+  - name: project-overview
+    url: "{{ dashboard_origin }}/projects/{{ ds_project }}"
+    output: assets/screenshots/04-project-overview.png
+    caption: Project overview page with the Serve models section and Deploy model action
+    alt_text: Project overview page for User Gshipley Project showing the Deploy model button in the Serve models section
+    wait_for:
+      - "body"
+    steps: []
+
+  - name: model-details
+    url: "{{ dashboard_origin }}/ai-hub/deployments/deploy"
+    output: assets/screenshots/05-model-details.png
+    caption: Model details step with the Qwen 3 4B Hugging Face URI entered
+    alt_text: Model details wizard step showing URI location set to hf://Qwen/Qwen3-4B
+    wait_for:
+      - "body"
+    steps:
+      - action: select
+        target: "Model location = URI"
+      - action: fill
+        target: "URI = {{ model_uri }}"
+      - action: fill
+        target: "Connection name = {{ model_source_connection }}"
+      - action: select
+        target: "Model type = Generative AI model"
+
+  - name: deployment-settings
+    url: "{{ dashboard_origin }}/ai-hub/deployments/deploy"
+    output: assets/screenshots/06-deployment-settings.png
+    caption: Model deployment settings with project, hardware profile, and vLLM runtime configured
+    alt_text: Model deployment settings showing project, deployment name, hardware profile, and serving runtime selections
+    wait_for:
+      - "body"
+    steps:
+      - action: select
+        target: "Project = {{ project_display_name }}"
+      - action: fill
+        target: "Deployment name = {{ deployment_name }}"
+      - action: select
+        target: "Hardware profile = {{ hardware_profile }}"
+      - action: select
+        target: "Serving runtime = {{ serving_runtime }}"
+
+  - name: review-deployment
+    url: "{{ dashboard_origin }}/ai-hub/deployments/deploy"
+    output: assets/screenshots/07-review-deployment.png
+    caption: Review step summarizing all deployment settings before submission
+    alt_text: Review step showing final deployment configuration for the Qwen 3 4B model
+    wait_for:
+      - "body"
+    steps: []
+
+  - name: deployment-submitted
+    url: "{{ dashboard_origin }}/ai-hub/deployments/{{ ds_project }}"
+    output: assets/screenshots/08-deployment-submitted.png
+    caption: Deployments page showing the newly submitted Qwen 3 4B deployment
+    alt_text: Deployments page with the claude-deploy-qwen3-4b deployment visible in the list
+    wait_for:
+      - "body"
+    steps: []
+
+  - name: deployment-running
+    url: "{{ dashboard_origin }}/ai-hub/deployments/{{ ds_project }}"
+    output: assets/screenshots/09-deployment-running.png
+    caption: Deployments page showing the Qwen 3 4B deployment in a running or progressing state
+    alt_text: Deployments page showing the claude-deploy-qwen3-4b deployment with its current status
+    wait_for:
+      - "body"
+    steps: []
+    notes:
+      - This shot may need to be captured after a delay to allow the deployment to progress beyond initial creation.

@@ -1,0 +1,19 @@
+product = "rhai-3.3"
+dashboard_origin = "https://data-science-gateway.apps.ocp.cloud.rhai-tmm.dev"
+dashboard_url = "https://data-science-gateway.apps.ocp.cloud.rhai-tmm.dev/"
+ds_project = "user-gshipley"
+project_display_name = "User Gshipley Project"
+model_display_name = "Qwen 3 4B"
+model_uri = "hf://Qwen/Qwen3-4B"
+model_source_connection = "qwen3-4b-source"
+deployment_name = "your-first-model-qwen3-4b"
+deployment_description = "First deployment of the Qwen 3 4B model for workshop validation"
+hardware_profile = "18GB Slice (Unreserved)"
+serving_runtime = "vLLM NVIDIA GPU ServingRuntime for KServe"
+estimated_minutes = 15
+session = "pw-1st-model"
+auth_state_file = "capture/auth-state.json"
+
+[viewport]
+width = 1440
+height = 1024
